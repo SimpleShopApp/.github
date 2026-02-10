@@ -10,7 +10,7 @@ Applicazione sviluppata con claude code e pensata come cookbook per lo sviluppo 
 
 Non adottare microservizi per moda, ma solo quando i driver di business (scalabilità, deploy indipendente, team autonomi) lo giustificano. Il modular monolith è spesso un'alternativa valida che offre molti dei benefici di manutenibilità senza la complessità distribuita.
 
-DDD introduce complessità architetturale significativa, richiede una curva di apprendimento ripida per tutto il team, collaborazione continua con domain experts e può risultare un over-engineering costoso. Se applicato a domini semplici o con team inesperti meglio partire con approcci più semplici (Transaction Script o Active Record) e adottare DDD solo quando la complessità del business lo giustifica realmente.
+DDD introduce complessità architetturale significativa, richiede una curva di apprendimento ripida per tutto il team, collaborazione continua con domain experts e può risultare un over-engineering costoso. Se applicato a domini semplici o con team inesperti meglio partire con approcci più semplici ([Transaction Script](https://martinfowler.com/eaaCatalog/transactionScript.html) o [Active Record](https://en.wikipedia.org/wiki/Active_record_pattern)) e adottare DDD solo quando la complessità del business lo giustifica realmente.
 
 ## Libri consigliati
 
