@@ -8,6 +8,6 @@ Claude Coded.
 
 ## Refactor: Downgrade java
 
-## Deploy su CI/CD e k3s
+## Deploy: Gitlab CI/CD su k3s
 
 ## Refactor: RabbitMQ to Kafka
