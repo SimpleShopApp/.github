@@ -4,6 +4,10 @@ Proof of Technology di un sistema e-commerce distribuito che dimostra l'applicaz
 
 Claude Coded.
 
+## Disclaimer
+
+Non adottare microservizi per moda, ma solo quando i driver di business (scalabilità, deploy indipendente, team autonomi) lo giustificano. Il modular monolith è spesso un'alternativa valida che offre molti dei benefici di manutenibilità senza la complessità distribuita. Hai dei dubbi sui microservizi? [Qui](https://amzn.to/4qrZ8mY) un libro che spiega perchè NON dovresti usarli.
+
 ## Analisi
 
 ## Sviluppo
