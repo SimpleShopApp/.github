@@ -27,3 +27,21 @@ DDD introduce complessità architetturale significativa, richiede una curva di a
 ## Frontend
 
 ## Test end to end
+
+# Requisiti non funzionali
+
+## Prestazioni e Scalabilità
+
+Tempi di risposta, throughput e ottimizzazione delle performance, horizontal scaling, auto-scaling e load balancing
+
+## Affidabilità
+
+Resilienza, fault tolerance e disaster recovery
+
+## Sicurezza
+
+Principi di sicurezza, validazione e protezione dei dati
+
+## Monitoraggio
+
+Logging, metriche, alerting e osservabilità
