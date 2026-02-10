@@ -12,6 +12,8 @@ Non adottare microservizi per moda, ma solo quando i driver di business (scalabi
 
 DDD introduce complessità architetturale significativa, richiede una curva di apprendimento ripida per tutto il team, collaborazione continua con domain experts e può risultare un over-engineering costoso. Se applicato a domini semplici o con team inesperti meglio partire con approcci più semplici ([Transaction Script](https://martinfowler.com/eaaCatalog/transactionScript.html) o [Active Record](https://en.wikipedia.org/wiki/Active_record_pattern)) e adottare DDD solo quando la complessità del business lo giustifica realmente.
 
+Se vuoi comunque utilizzare DDD e microservizi event-driven, continua a leggere.
+
 ## Libri consigliati
 
 - Inizia con [Domain-Driven Design](https://amzn.to/4qsLoZ4).
