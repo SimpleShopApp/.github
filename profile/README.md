@@ -4,6 +4,8 @@ Proof of Technology di un sistema e-commerce distribuito che dimostra l'applicaz
 
 Claude Coded.
 
+## Analisi
+
 ## Sviluppo
 
 ## Refactor: Downgrade java
