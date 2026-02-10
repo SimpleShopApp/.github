@@ -4,7 +4,7 @@ Proof of Technology di un sistema e-commerce distribuito che dimostra l'applicaz
 
 Ho scritto questa applicazione per studiare il DDD e pattern di resilienza e monitoraggio. Usala a tuo rischio.
 
-Claude Coded.
+Applicazione sviluppata con claude code e pensata come cookbook per lo sviluppo con agenti di software enterprise.
 
 ## Disclaimer
 
