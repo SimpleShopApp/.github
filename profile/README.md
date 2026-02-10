@@ -20,12 +20,4 @@ DDD introduce complessità architetturale significativa, richiede una curva di a
 - Completa con [Designing Data-Intensive Applications](https://amzn.to/4qsKiws) per la teoria dei sistemi distribuiti
 - Consulta [Release It!](https://amzn.to/3MhDmo6) per i pattern di resilienza in produzione
 
-## Analisi
 
-## Sviluppo
-
-## Refactor: Downgrade java
-
-## Deploy: Gitlab CI/CD su k3s
-
-## Refactor: RabbitMQ to Kafka
