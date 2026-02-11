@@ -9,39 +9,41 @@ Applicazione sviluppata con claude code e pensata come cookbook per lo sviluppo 
 ## Architettura
 
 ```mermaid
-C4Container
-    title SimpleShop - Diagramma Container
+flowchart TB
+    Cliente([Cliente])
 
-    Person(cliente, "Cliente", "Effettua ordini e richieste di reso")
+    subgraph BC["Bounded Contexts"]
+        direction LR
+        Sales["<b>Sales</b><br/>:8081<br/><i>Core Domain</i>"]
+        Inventory["<b>Inventory</b><br/>:8082<br/><i>Supporting</i>"]
+        Payment["<b>Payment</b><br/>:8083<br/><i>Generic</i>"]
+        Shipping["<b>Shipping</b><br/>:8084<br/><i>Supporting</i>"]
+        CS["<b>Customer Service</b><br/>:8085<br/><i>Process Manager</i>"]
+    end
 
-    System_Boundary(simpleshop, "SimpleShop") {
+    subgraph Infra["Infrastruttura"]
+        direction LR
+        DB[("PostgreSQL<br/>5 schema isolati")]
+        MQ["RabbitMQ<br/>Event Bus<br/>(Transactional Outbox)"]
+    end
 
-        Container(sales, "Sales", "Spring Boot :8081", "Core Domain - Order aggregate e lifecycle")
-        Container(inventory, "Inventory", "Spring Boot :8082", "Supporting - Stock e prenotazioni")
-        Container(payment, "Payment", "Spring Boot :8083", "Generic - Pagamenti via ACL")
-        Container(shipping, "Shipping", "Spring Boot :8084", "Supporting - Spedizioni e tracking")
-        Container(cs, "Customer Service", "Spring Boot :8085", "Supporting - Process Manager resi/rimborsi")
+    Cliente -->|REST| Sales
+    Cliente -->|REST| CS
 
-        ContainerDb(postgres, "PostgreSQL", "5 schema isolati", "sales, inventory, payment, shipping, customerservice")
-        ContainerQueue(rabbitmq, "RabbitMQ", "5 topic exchange", "Event bus asincrono con Transactional Outbox")
-    }
+    BC -.->|JDBC| DB
+    BC <-->|AMQP| MQ
 
-    Rel(cliente, sales, "Crea ordini", "REST")
-    Rel(cliente, cs, "Richiede resi", "REST")
+    classDef core fill:#1168bd,stroke:#0b4884,color:#fff
+    classDef supporting fill:#438dd5,stroke:#2e6295,color:#fff
+    classDef generic fill:#85bbf0,stroke:#5d9dd8,color:#000
+    classDef infra fill:#666,stroke:#333,color:#fff
+    classDef client fill:#08427b,stroke:#052e56,color:#fff
 
-    Rel(sales, postgres, "Legge/Scrive", "JDBC")
-    Rel(inventory, postgres, "Legge/Scrive", "JDBC")
-    Rel(payment, postgres, "Legge/Scrive", "JDBC")
-    Rel(shipping, postgres, "Legge/Scrive", "JDBC")
-    Rel(cs, postgres, "Legge/Scrive", "JDBC")
-
-    Rel(sales, rabbitmq, "Pubblica/Consuma eventi", "AMQP")
-    Rel(inventory, rabbitmq, "Pubblica/Consuma eventi", "AMQP")
-    Rel(payment, rabbitmq, "Pubblica/Consuma eventi", "AMQP")
-    Rel(shipping, rabbitmq, "Pubblica/Consuma eventi", "AMQP")
-    Rel(cs, rabbitmq, "Pubblica/Consuma eventi", "AMQP")
-
-    UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
+    class Sales core
+    class Inventory,Shipping,CS supporting
+    class Payment generic
+    class DB,MQ infra
+    class Cliente client
 ```
 
 **Pattern utilizzati:**
