@@ -13,11 +13,12 @@ flowchart TB
     Cliente([Cliente])
 
     subgraph BC["Bounded Contexts"]
-        direction LR
         Sales["<b>Sales</b><br/>:8081<br/><i>Core Domain</i>"]
+
         Inventory["<b>Inventory</b><br/>:8082<br/><i>Supporting</i>"]
         Payment["<b>Payment</b><br/>:8083<br/><i>Generic</i>"]
         Shipping["<b>Shipping</b><br/>:8084<br/><i>Supporting</i>"]
+
         CS["<b>Customer Service</b><br/>:8085<br/><i>Process Manager</i>"]
     end
 
@@ -29,6 +30,16 @@ flowchart TB
 
     Cliente -->|REST| Sales
     Cliente -->|REST| CS
+
+    Sales -->|OrderCreated| Inventory
+    Inventory -->|InventoryReserved| Payment
+    Payment -->|PaymentAuthorized| Sales
+    Sales -->|OrderConfirmed| Shipping
+    Shipping -->|ShipmentDispatched| Sales
+
+    CS <-->|Return Events| Sales
+    CS <-->|Refund Events| Payment
+    CS <-->|Restore Stock| Inventory
 
     BC -.->|JDBC| DB
     BC <-->|AMQP| MQ
